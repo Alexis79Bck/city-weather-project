@@ -1,22 +1,42 @@
-import { useState } from "react"
-import CityWeatherForm from "./CityWeatherForm";
+import { useEffect, useState } from "react"
+import CityWeatherForm from "./CityWeatherForm"; 
+import CityWeatherMainInfo from "./CityWeatherMainInfo";
+
 
 export default function CityWeatherApp() {
     
     const [weather, setWeather] = useState(null);
+       
+    /** El useEffect es un hook el cual se ejecutará cuando:
+     *  1.- Cuando se renderiza la primera vez el componente.
+     *  2.- Cuando exista cambio en una o mas propiedades del componente.
+     *  3.- Antes y/o despues de ser destruído el componente.
+     *
+     *  Este hook ejecutará una funcion callback con las acciones especificada y tambien
+     *  puede usuarse la cantidad N de este hook mientras sea necesario.
+     */
+    useEffect(() => {
+        loadInfoWeather();        
+    }, []);
+    
+    useEffect(() => {        
+        const pageTitle = `
+                           Current Weather | City: ${weather?.location.name ?? ""}
+                         `;
+        document.title = pageTitle;
+    }, [weather]);
     
     /**
      * Funcion asícrona creada para realizar una petición HTTP
      * @param {*} city 
      */
-    async function loadInfoWeather(city) {
+    async function loadInfoWeather(city = "Guayana City") {
         try {
-            const request = await fetch(`${process.env.REACT_APP_API_URL}&key=${process.env.REACT_APP_API_KEY}&q=${city}`);
+            const request = await fetch(`${process.env.REACT_APP_API_URL}&key=${process.env.REACT_APP_API_KEY}&q=${city}&lang=${process.env.REACT_APP_API_LANGUAGE}`);
             
-            const reqJson = await request.json();
-            setWeather(reqJson)
-            console.clear()
-            console.log(reqJson);
+            const respJson = await request.json();
+            setWeather(respJson)
+            
         } catch (error) {
             
         }
@@ -35,7 +55,8 @@ export default function CityWeatherApp() {
             <span className="appTitle">{process.env.REACT_APP_NAME}</span> 
             <hr />
             <CityWeatherForm onChangeCity={handleChangeCity} />
-            <div className="currentInfoCityWeather">Estado: {weather?.location.region} / Pais: {weather?.location.country}</div>
+
+            <div className="currentInfoCityWeather"><CityWeatherMainInfo weather={weather}/> </div>
         </div>
     );
 }

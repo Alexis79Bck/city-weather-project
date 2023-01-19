@@ -2,7 +2,7 @@ import { useState } from "react"
 
 export default function CityWeatherForm({onChangeCity}) {
      
-    const [city, setCity] = useState("Guayana City");
+    const [city, setCity] = useState("");
         
     /**
      * Manejador del evento onChange del input el cual alamacena el valor de city.
