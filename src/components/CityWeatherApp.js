@@ -30,7 +30,7 @@ export default function CityWeatherApp() {
      * Funcion asícrona creada para realizar una petición HTTP
      * @param {*} city 
      */
-    async function loadInfoWeather(city = "Guayana City") {
+    async function loadInfoWeather(city = "Ciudad Guayana") {
         try {
             const request = await fetch(`${process.env.REACT_APP_API_URL}&key=${process.env.REACT_APP_API_KEY}&q=${city}&lang=${process.env.REACT_APP_API_LANGUAGE}`);
             
