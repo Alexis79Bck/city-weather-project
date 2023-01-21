@@ -25,7 +25,7 @@ export default function CityWeatherForm({onChangeCity}) {
     }
     return (
         <form className={styles.formCity} onSubmit={handleSubmit}>
-            <span className={styles.labelCity}> Ciudad: </span>
+            <span className={styles.labelCity}> Ingrese Nombre de Ciudad (default Ciudad Guayana): </span>
             <input className={styles.inputCity} type="text" onChange={handleChange} value={city} />
         </form>
     );
