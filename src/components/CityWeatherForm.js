@@ -3,7 +3,7 @@ import styles  from '../css_modules/CityWeatherForm.module.css'
 
 export default function CityWeatherForm({onChangeCity}) {
      
-    const [city, setCity] = useState("");
+    const [city, setCity] = useState("Ciudad Guayana");
         
     /**
      * Manejador del evento onChange del input el cual alamacena el valor de city.
@@ -26,7 +26,7 @@ export default function CityWeatherForm({onChangeCity}) {
     return (
         <form className={styles.formCity} onSubmit={handleSubmit}>
             <span className={styles.labelCity}> Ciudad: </span>
-            <input className={styles.inputCity} type="text" onChange={handleChange}  />
+            <input className={styles.inputCity} type="text" onChange={handleChange} value={city} />
         </form>
     );
     

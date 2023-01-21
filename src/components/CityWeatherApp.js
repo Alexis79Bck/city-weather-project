@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import CityWeatherForm from "./CityWeatherForm"; 
 import CityWeatherMainInfo from "./CityWeatherMainInfo";
-
 import styles  from '../css_modules/CityWeatherApp.module.css'
+import Loading from "./Loading";
 
 export default function CityWeatherApp() {
     
@@ -33,14 +33,16 @@ export default function CityWeatherApp() {
      */
     async function loadInfoWeather(city = "Ciudad Guayana") {
         try {
+            
             const request = await fetch(`${process.env.REACT_APP_API_URL}&key=${process.env.REACT_APP_API_KEY}&q=${city}&lang=${process.env.REACT_APP_API_LANGUAGE}`);
-            
             const respJson = await request.json();
-            setWeather(respJson)
+
+            setTimeout(()=> {
+                setWeather(respJson)
+            }, 3500 )
             
-        } catch (error) {
             
-        }
+        } catch (error) {}
     }
     /**
      * Manejador del evento onChangeCity, al recibir el parametro city este irá
@@ -56,8 +58,11 @@ export default function CityWeatherApp() {
             <div className={styles.appTitle}>{process.env.REACT_APP_NAME} <hr /></div> 
            
             <CityWeatherForm onChangeCity={handleChangeCity} />
-
-            <div className="currentInfoCityWeather"><CityWeatherMainInfo weather={weather}/> </div>
+           
+            <div className="currentInfoCityWeather">
+                 { weather ? <CityWeatherMainInfo weather={weather}/> : <Loading /> }
+                
+            </div>
         </div>
     );
 }
