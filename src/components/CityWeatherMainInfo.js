@@ -9,6 +9,7 @@ export default function CityWeatherMainInfo({ weather }) {
     
     const mainInfo = <div>
                         <WeatherBasicInfo currentWeather={weather?.current} location={weather?.location}/>
+                        <br />
                         <CityLocationMap location={weather?.location} />
                     </div>
     
@@ -19,7 +20,7 @@ export default function CityWeatherMainInfo({ weather }) {
      */  
     function CityLocationMap({ location }) { 
                                                                 
-        const cityLocation =  <Card sx={{ margin: 'auto',  width: '30%', justifyContent: 'center', backgroundColor: '#fdffcd', boxShadow: '7px 7px 14px silver', border: '1px solid black'}}>     
+        const cityLocation =  <Card sx={{ margin: 'auto',  width: '100%', justifyContent: 'center', backgroundColor: '#fdffcd', boxShadow: '7px 7px 14px silver', border: '1px solid black'}}>     
                                     <CardContent sx={{ fontSize: 12, textAlign: 'center'}}>
                                         
                                         <CityMapView cityName={location?.name} cityRegion={location?.region} cityCountry={location?.country} />
@@ -37,7 +38,7 @@ export default function CityWeatherMainInfo({ weather }) {
      */
     function WeatherBasicInfo({ currentWeather, location }) { 
                                                                 
-        const basicInfo =  <Card sx={{ margin: 'auto', width: '30%', justifyContent: 'center', backgroundColor: '#fdffcd', boxShadow: '7px 7px 14px silver', border: '1px solid black'}}>
+        const basicInfo =  <Card sx={{ margin: 'auto', width: '100%', justifyContent: 'center', backgroundColor: '#fdffcd', boxShadow: '7px 7px 14px silver', border: '1px solid black'}}>
                                 <CardHeader sx={{ fontSize: 18, textAlign: 'center', color: 'navy' }} title={`${location?.name} | ${location?.region} | ${location?.country}`} />
                                 
                                 <CardContent sx={{ fontSize: 12, textAlign: 'center'}}>

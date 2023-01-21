@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import CityWeatherForm from "./CityWeatherForm"; 
 import CityWeatherMainInfo from "./CityWeatherMainInfo";
 
+import styles  from '../css_modules/CityWeatherApp.module.css'
 
 export default function CityWeatherApp() {
     
@@ -51,9 +52,9 @@ export default function CityWeatherApp() {
         loadInfoWeather(city);
     }
     return (
-        <div> 
-            <span className="appTitle">{process.env.REACT_APP_NAME}</span> 
-            <hr />
+        <div className={styles.appContainer}> 
+            <div className={styles.appTitle}>{process.env.REACT_APP_NAME} <hr /></div> 
+           
             <CityWeatherForm onChangeCity={handleChangeCity} />
 
             <div className="currentInfoCityWeather"><CityWeatherMainInfo weather={weather}/> </div>

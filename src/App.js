@@ -1,11 +1,7 @@
 import CityWeatherApp from "./components/CityWeatherApp";
 
 function App() {
-  return (
-          <>
-          <CityWeatherApp />
-          </>
-        );
+  return  <CityWeatherApp />;
 }
 
 export default App;

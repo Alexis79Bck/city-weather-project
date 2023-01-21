@@ -1,0 +1,24 @@
+.formCity {
+    margin: 16px;
+    text-align: center;
+}
+
+.labelCity {      
+    font-size: 22px;
+    color:brown;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.inputCity {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 22px;
+    border: 2px solid navy;
+    background-color:lavenderblush;
+    border-radius: 3px;
+}
+
+
+

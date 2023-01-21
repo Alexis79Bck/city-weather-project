@@ -1,0 +1,12 @@
+.appContainer {
+    width: 640px;
+    margin: 64px auto;
+}
+
+.appTitle {
+    
+    font-size: 28px;
+    text-align: center;
+    color: navy
+}
+
